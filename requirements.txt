@@ -5,3 +5,4 @@ altair==4.0
 langchain==0.1.7
 langchain_community==0.0.20
 faiss-cpu==1.7.4
+langchain_openai==0.0.6
