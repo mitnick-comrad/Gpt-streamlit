@@ -50,7 +50,7 @@ def model(question,y=0.43,io=5,uk=16):
 
     #print(ko[0][1])
     prompt= f""" '''{chunky(ko[:io])}'''
-    Within 170 words, Reffering only to above infromation answer the question from the auther's perspective as a casual and friendly essay type response in simple words with examples if any from the information above along with self-caring, in less than 300 words.
+    Within 150 words, Reffering only to above infromation answer the question from the auther's perspective as a casual and friendly essay type response in simple words with examples if any from the information above along with self-caring, in less than 300 words.
 
     ''' {question}''' """
     import os
@@ -62,7 +62,7 @@ def model(question,y=0.43,io=5,uk=16):
     try:
         message=[{
                     "role": "system",
-                    "content": "You are an Assistant that answer questions within 200 words from the author's perspective who is 'Thich Nhat Hanh' with empathy, emotional wellbeing and advice on how to self-reflect as per question, based on the given user information and conditions to the user questions with respect to the context provided."
+                    "content": "You are an Assistant that answer questions within 150 words from the author's perspective who is 'Thich Nhat Hanh' with empathy, emotional wellbeing and advice on how to self-reflect as per question, based on the given user information and conditions to the user questions with respect to the context provided."
                         }]
         message.extend(context)
         message.append({
