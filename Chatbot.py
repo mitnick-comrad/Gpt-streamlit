@@ -1,12 +1,15 @@
 import streamlit as st
 from streamlit_chat import message as st_message
 import openai
+from dotenv import load_dotenv
 
+load_dotenv()
 import os
-from secret_apis import OPENAI_API_KEY
+OPENAI_API_KEY=os.environ.get('KEY')
 
 # Set the OpenAI API key
-os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
+OPENAI_API_KEY=os.environ['KEY']
+
 openai.api_key = OPENAI_API_KEY
 
 # Define function to generate response
@@ -20,8 +23,8 @@ def model(question,y=0.43,io=5,uk=16):
     
     from langchain_community.vectorstores import FAISS
     from langchain_openai import OpenAIEmbeddings
-    OpenAI_KEY='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' #client GPT4 Key
-    embeddings = OpenAIEmbeddings(openai_api_key=OpenAI_KEY)
+    #OpenAI_KEY='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' #client GPT4 Key
+    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
     def chunky(tex):
         s=''
         for a in tex:
@@ -33,10 +36,10 @@ def model(question,y=0.43,io=5,uk=16):
     dr= [hp for hp in range(117)]
     import random
     random.shuffle(dr)
-    for a in dr[:58]:
+    for a in dr[:5]:
 
-        if os.path.exists(f'/content/drive/MyDrive/model/faiss_index_datamodel_{a}'):
-            retriever= FAISS.load_local(f'/content/drive/MyDrive/model/faiss_index_datamodel_{a}',embeddings)
+        if os.path.exists(f'./model/faiss_index_datamodel_{a}'):
+            retriever= FAISS.load_local(f'./model/faiss_index_datamodel_{a}',embeddings)
             k= retriever.similarity_search_with_score(question,k=5)
             z=[h[1] for h in k]
             if min(z)<y:
@@ -57,7 +60,7 @@ def model(question,y=0.43,io=5,uk=16):
     from openai import OpenAI
     client = OpenAI(
 
-        api_key='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',
+        api_key=OPENAI_API_KEY,
     )
     try:
         message=[{
