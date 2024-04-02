@@ -23,7 +23,7 @@ def model(question,y=0.43,io=5,uk=16):
     
     from langchain_community.vectorstores import FAISS
     from langchain_openai import OpenAIEmbeddings
-    #OpenAI_KEY='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' #client GPT4 Key
+    
     embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
     def chunky(tex):
         s=''
