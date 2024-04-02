@@ -9,7 +9,7 @@ OPENAI_API_KEY=os.environ.get('KEY')
 
 # Set the OpenAI API key
 OPENAI_API_KEY=os.environ['KEY']
-
+OPENAI_API_KEY= OPENAI_API_KEY.replace('#','')
 openai.api_key = OPENAI_API_KEY
 
 # Define function to generate response
